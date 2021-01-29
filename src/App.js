@@ -43,7 +43,6 @@ function App() {
     }
 
     if (item.id) {
-      console.log(item);
       axiosInstance
         .put("/" + item.id + "/", item)
         .then(refreshList)

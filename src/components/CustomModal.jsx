@@ -5,19 +5,21 @@ function CustomModal(props) {
   const activeItem = props.activeItem;
   const setActiveItem = props.setActiveItem;
 
-  const title = activeItem.title !== "" ? activeItem.title : "Enter Todo Title";
-  const description =
-    activeItem.description !== ""
-      ? activeItem.description
-      : "Enter Todo description";
-
+  function getTitle() {
+    if (activeItem.title !== "") return activeItem.title;
+    else return "Enter Todo Title";
+  }
+  function getDescription() {
+    if (activeItem.description !== "") return activeItem.description;
+    else return "Enter Todo description";
+  }
 
   function handleChange(event) {
     let { name, value } = event.target;
-
     if (event.target.type === "checkbox") {
       value = event.target.checked;
     }
+    
     setActiveItem((prevValue) => {
       return {
         ...prevValue,
@@ -42,7 +44,7 @@ function CustomModal(props) {
                 name="title"
                 value={activeItem.title}
                 onChange={handleChange}
-                placeholder={title}
+                placeholder={getTitle()}
               />
             </Form.Group>
             <Form.Group controlId="form-description">
@@ -52,7 +54,7 @@ function CustomModal(props) {
                 name="description"
                 value={activeItem.description}
                 onChange={handleChange}
-                placeholder={description}
+                placeholder={getDescription()}
               />
             </Form.Group>
 
@@ -60,8 +62,7 @@ function CustomModal(props) {
               type="checkbox"
               label="Completed"
               name="completed"
-              defaultChecked={activeItem.completed}
-              aria-checked={activeItem.completed}
+              checked={activeItem.completed}
               onChange={handleChange}
             />
           </Form>
@@ -70,7 +71,11 @@ function CustomModal(props) {
           <Button variant="primary" onClick={() => props.onSave(activeItem)}>
             Save
           </Button>
-          <Button variant="danger" onClick={() => props.handleDelete(activeItem)}>
+          <Button
+            variant="danger"
+            hidden={activeItem.title === "" ? true : false}
+            onClick={() => props.handleDelete(activeItem)}
+          >
             Delete
           </Button>
         </Modal.Footer>

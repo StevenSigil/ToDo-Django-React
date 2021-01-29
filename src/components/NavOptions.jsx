@@ -14,7 +14,11 @@ function NavOptions(props) {
         </Col>
 
         <Col md={2}>
-          <Button onClick={props.createItem} variant="outline-success" size={"lg"}>
+          <Button
+            onClick={props.createItem}
+            variant="success"
+            style={{ minWidth: "78px" }}
+          >
             New
           </Button>
         </Col>

@@ -30,9 +30,9 @@ function TodoItems(props) {
           </Col>
 
           <Col sm={2}>
-            <ButtonGroup vertical size="sm">
+            <ButtonGroup vertical size="sm" style={{ minWidth: "78px" }}>
               <Button
-                variant="outline-primary"
+                variant="primary"
                 onClick={() => handleComplete(item)}
                 disabled={props.viewCompleted}
               >

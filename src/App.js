@@ -5,13 +5,12 @@ import { ListGroup, Row, Col, Card } from "react-bootstrap";
 import CustomModal from "./components/CustomModal";
 import TodoItems from "./components/TodoItems";
 import NavOptions from "./components/NavOptions";
-import axios from "axios";
+import Footer from "./components/Footer";
 import axiosInstance from "./axios";
 
 function App() {
   const [viewCompleted, setViewCompleted] = useState(false);
   const [todoList, setTodoList] = useState([]);
-
   const [showModal, setShowModal] = useState(false);
   const [activeItem, setActiveItem] = useState({
     title: "",
@@ -27,38 +26,41 @@ function App() {
   function refreshList() {
     setShowModal(false);
     axiosInstance
-      // .get("http://localhost:8000/api/todo/")
-      .get('todo/')
-      .then((res) => {
-        console.log(res);
-        setTodoList(res.data);
-      })
+      .get("/")
+      .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   }
 
   function handleSubmit(item) {
-    const URL_id = "http://localhost:8000/api/todo/" + item.id + "/";
     setShowModal(false);
 
+    var firstWord = item.title.split(" ")[0];
+    var firstLetter = firstWord[0].toUpperCase();
+    item.title = firstLetter + item.title.slice(firstLetter.length);
+
+    if (item.description === "") {
+      item.description = "TBD";
+    }
+
     if (item.id) {
-      axios
-        .put(URL_id, item)
+      console.log(item);
+      axiosInstance
+        .put("/" + item.id + "/", item)
         .then(refreshList)
         .catch((error) => console.log(error));
       return;
     } else {
-      axios
-        .post("http://localhost:8000/api/todo/", item)
-        .then(() => refreshList())
+      axiosInstance
+        .post("/", item)
+        .then(refreshList)
         .catch((error) => console.log(error));
     }
   }
 
   function handleDelete(item) {
-    const URL_id = "http://localhost:8000/api/todo/" + item.id + "/";
-    axios
-      .delete(URL_id, item)
-      .then(() => refreshList())
+    axiosInstance
+      .delete("/" + item.id + "/", item)
+      .then(refreshList)
       .catch((error) => console.log(error));
   }
 
@@ -85,8 +87,6 @@ function App() {
     <>
       <Row className="main-row">
         <Col md={6} className="mx-auto p-0">
-          {/* <div className="card p-4"> */}
-
           <Card>
             <Card.Header>
               <h1>To-do</h1>
@@ -111,9 +111,9 @@ function App() {
             </ListGroup>
           </Card>
         </Col>
-
-        {/* </div> */}
       </Row>
+
+      <Footer />
 
       <CustomModal
         activeItem={activeItem}

@@ -6,6 +6,7 @@ import CustomModal from "./components/CustomModal";
 import TodoItems from "./components/TodoItems";
 import NavOptions from "./components/NavOptions";
 import axios from "axios";
+import axiosInstance from "./axios";
 
 function App() {
   const [viewCompleted, setViewCompleted] = useState(false);
@@ -25,9 +26,13 @@ function App() {
 
   function refreshList() {
     setShowModal(false);
-    axios
-      .get("http://localhost:8000/api/todo/")
-      .then((res) => setTodoList(res.data))
+    axiosInstance
+      // .get("http://localhost:8000/api/todo/")
+      .get('todo/')
+      .then((res) => {
+        console.log(res);
+        setTodoList(res.data);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -73,7 +78,7 @@ function App() {
     var d = date.getDate().toString();
     var m = date.getDay().toString();
     var y = date.getFullYear().toString();
-    return (m + "/" + d + "/" + y);
+    return m + "/" + d + "/" + y;
   }
 
   return (

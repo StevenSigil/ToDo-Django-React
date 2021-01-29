@@ -14,12 +14,11 @@ function TodoItems(props) {
 
   function handleComplete(item) {
     item.completed = true;
-    console.log(item);
     props.handleSubmit(item);
   }
 
   return newItems.map((item) => (
-    <>
+    <div key={item.id}>
       <ListGroup.Item>
         <Row noGutters>
           <Col sm={2}></Col>
@@ -49,7 +48,7 @@ function TodoItems(props) {
           </Col>
         </Row>
       </ListGroup.Item>
-    </>
+    </div>
   ));
 }
 

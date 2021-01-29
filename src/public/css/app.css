@@ -1,0 +1,79 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  max-width: 100vw;
+  padding: 2%;
+
+  color: #0f0f0f;
+
+  background-color: #e7e6e1;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.main-row {
+  margin: 0;
+}
+h1, h2 {
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 2rem;
+}
+h2 {
+  margin: 1.2rem auto 2rem;
+}
+
+.card {
+  background-color: #c1c0b9;
+  color: #537791;
+  min-height: 65vh;
+}
+.card-header {
+  padding: inherit;
+}
+.list-group {
+  padding-bottom: 2rem;
+}
+.list-group-item {
+  background-color: inherit;
+}
+
+.col-sm-6,
+.col-sm-4,
+.col-sm-2,
+.col-md-2,
+.col-sm-8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.todo-title {
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+.todo-description {
+  padding: 0;
+  margin: 0;
+}
+.completed-todo {
+  text-decoration: line-through;
+}
+
+.left-buttons > button {
+  margin-left: 10px;
+}
+.navbar {
+  /* padding: 12px 19px; */
+}
+.new-button {
+  padding: 0 7px;
+}

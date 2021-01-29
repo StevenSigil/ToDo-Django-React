@@ -152,9 +152,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')   # Static collection
 STATICFILES_DIRS = []    # Static storage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CORS_ORIGIN_WHITELIST = [
+'http://localhost:3000',
+'http://127.0.0.1:3000'
+]
+
 CORS_ALLOWED_ORIGINS = [
-    'https://0.0.0.0:3000',
-    'https://localhost:3000',
-    'https://127.0.0.1:3000',
+    'http://0.0.0.0:3000',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'https://django-react-todo-v1.herokuapp.com'
 ]

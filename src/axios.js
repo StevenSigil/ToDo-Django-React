@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/todo",
-  timeout: 3000,
+  baseURL: "https://django-react-todo-v1.herokuapp.com/api/todo",
+  timeout: 5000,
 });
 
 export default axiosInstance;

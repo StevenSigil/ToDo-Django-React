@@ -88,8 +88,8 @@ function App() {
         <Col md={6} className="mx-auto p-0">
           <Card>
             <Card.Header>
-              <h1>To-do</h1>
-              <h2>{getDate()}</h2>
+              <h2>To-do</h2>
+              <h5>{getDate()}</h5>
             </Card.Header>
             <Card.Header>
               <NavOptions

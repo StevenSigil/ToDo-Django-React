@@ -23,7 +23,6 @@ ALLOWED_HOSTS = [
     'django-react-todo-v1.herokuapp.com'
 ]
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
